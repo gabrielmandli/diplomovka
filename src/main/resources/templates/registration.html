@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Taco Cloud</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+</head>
+
+<body>
+<h1>Register</h1>
+<img th:src="@{/images/TacoCloud.png}"/>
+
+<form method="POST" th:action="@{/register}" th:object="${user}" id="registerForm">
+
+
+
+    <label for="username">Username: </label>
+    <input type="text" th:field="*{username}" name="username"/>
+    <span class="validationError"
+         th:if="${#fields.hasErrors('username')}"
+         th:errors="*{username}">Ingredient Error
+    </span>
+    <br/>
+
+    <label for="password">Password: </label>
+    <input type="password" th:field="*{password}" name="password"/>
+    <span class="validationError"
+         th:if="${#fields.hasErrors('password')}"
+         th:errors="*{password}">Ingredient Error
+    </span>
+    <br/>
+
+    <label for="confirm">Confirm password: </label>
+    <input type="password" th:field="*{confirm}" name="confirm"/>
+    <span class="validationError"
+         th:if="${#fields.hasErrors('confirm')}"
+         th:errors="*{confirm}">Ingredient Error
+    </span>
+    <br/>
+
+
+    <label for="fullname">Full name: </label>
+    <input type="text" th:field="*{fullName}" name="fullname"/><br/>
+
+    <label for="street">Street: </label>
+    <input type="text" th:field="*{street}" name="street"/><br/>
+
+    <label for="city">City: </label>
+    <input type="text" th:field="*{city}" name="city"/><br/>
+
+    <label for="state">State: </label>
+    <input type="text" th:field="*{state}" name="state"/><br/>
+
+    <label for="zip">Zip: </label>
+    <input type="text" th:field="*{zip}" name="zip"/><br/>
+
+    <label for="phone">Phone: </label>
+    <input type="text" th:field="*{phone}" name="phone"/><br/>
+
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p class="validationError" th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+    </div>
+
+    <input type="submit" value="Register"/>
+</form>
+
+</body>
+</html>
