@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Taco Cloud</title>
-        <link rel="stylesheet" th:href="@{/styles.css}"
+        <link rel="stylesheet" th:href="@{/styles.css}">
     </head>
     <body>
         <form method="POST" th:action="@{/logout}">
@@ -12,7 +12,8 @@
         <h1>Design your Taco !</h1>
         <img th:src="@{/images/TacoCloud.png}"/>
 
-        <form method="post" th:object="${taco}">
+        <form method="post" th:action="@{/design}" th:object="${taco}">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
             <div class="grid">
                 <div class="ingredient-group" id="wraps">
                     <h3>Designate your wrap:</h3>
@@ -72,7 +73,7 @@
                       th:errors="*{name}">Name error</span>
                 <br/>
 
-                <button>Submit your taco</button>
+                <input type="submit" value="Submit your Taco"/>
             </div>
         </form>
     </body>

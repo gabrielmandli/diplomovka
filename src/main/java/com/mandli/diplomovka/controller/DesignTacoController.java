@@ -3,7 +3,7 @@ package com.mandli.diplomovka.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -3,5 +3,9 @@ spring:
     url: jdbc:mysql://localhost:3308/tacocloud
     username: taco
     password: lovetacos
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
 server:
   port: 9090

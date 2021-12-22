@@ -1,7 +1,7 @@
 package com.mandli.diplomovka.validator;
 
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 
 import org.springframework.stereotype.Service;
 

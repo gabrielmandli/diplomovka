@@ -1,6 +1,6 @@
 package com.mandli.diplomovka.dto;
 
-import jakarta.validation.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 

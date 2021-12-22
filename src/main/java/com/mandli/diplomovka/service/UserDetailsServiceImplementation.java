@@ -10,12 +10,12 @@ import com.mandli.diplomovka.entity.User;
 import com.mandli.diplomovka.repository.UserRepository;
 
 @Service
-public class UserRepositoryUserDetailsService implements UserDetailsService {
+public class UserDetailsServiceImplementation implements UserDetailsService {
 
     private UserRepository userRepository;
 
     @Autowired
-    public UserRepositoryUserDetailsService(UserRepository userRepository) {
+    public UserDetailsServiceImplementation(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
