@@ -1,11 +1,18 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3308/tacocloud
-    username: taco
-    password: lovetacos
+    url: jdbc:mysql://mysql:3306/diplomovkadb
+    username: myusername
+    password: mypassword
+
   jpa:
     generate-ddl: true
     hibernate:
       ddl-auto: update
+
+  devtools:
+    remote:
+      secret: mysecret
+  main:
+    allow-circular-references: true
 server:
-  port: 9090
+  port: 8080
