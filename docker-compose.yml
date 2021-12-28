@@ -1,0 +1,30 @@
+version: "3"
+
+networks:
+  diplomovkanetwork:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 9090:8080
+    depends_on:
+      - mysql
+    command: ["/diplomovka/wait-for-it.sh", "database:3306", "--", "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /diplomovka/build/libs/diplomovka-0.0.1-SNAPSHOT.jar"]
+    networks:
+      - diplomovkanetwork
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_USER=myusername
+      - MYSQL_PASSWORD=mypassword
+      - MYSQL_DATABASE=diplomovkadb
+    ports:
+      - "3308:3306"
+    networks:
+      - diplomovkanetwork
