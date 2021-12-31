@@ -25,13 +25,19 @@ dependencies {
 
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     compileOnly 'org.projectlombok:lombok:1.18.22'
     annotationProcessor 'org.projectlombok:lombok:1.18.22'
 
+//    Testing
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    def junitJupiterVersion = '5.4.2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation "org.testcontainers:testcontainers:1.16.2"
+    testImplementation "org.testcontainers:junit-jupiter:1.16.2"
+    testImplementation "org.testcontainers:mysql:1.16.2"
 
 
 }
@@ -39,9 +45,3 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
-/*jar {
-    manifest {
-        attributes ('Main-Class': 'com.mandli.diplomovka.DiplomovkaApplication')
-    }
-}*/
