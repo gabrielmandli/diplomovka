@@ -10,7 +10,7 @@ node {
     }
     
     stage ('Test') {
-        diplomovkaWithGradle.inside ('-v /var/run/docker.sock:/var/run/docker.sock') {
+        diplomovkaWithGradle.inside ('-v tcp://127.0.0.1:2376:/var/run/docker.sock') {
             sh 'cd diplomovka'
             sh 'gradle test'
         }
