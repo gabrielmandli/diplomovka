@@ -1,10 +1,12 @@
+def diplomovkaWithGradle
+
 node {
     stage ('SCM Pull') {
         checkout scm
     }
     
     stage ('Build and Package') {
-        def diplomovkaWithGradle = docker.build("diplomovka_gradle", "--file Dockerfile .") 
+        diplomovkaWithGradle = docker.build("diplomovka_gradle", "--file Dockerfile .") 
     }
     
     stage ('Test') {
