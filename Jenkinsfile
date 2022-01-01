@@ -4,11 +4,11 @@ node {
     }
     
     stage ('Build and Package') {
-        docker.build("diplomovka_gradle", "--file Dockerfile .") 
+        def diplomovkaWithGradle = docker.build("diplomovka_gradle", "--file Dockerfile .") 
     }
     
     stage ('Test') {
-        docker.image('diplomovka_gradle')
+        diplomovkaWithGradle
             .inside ('-v //var/run/docker.sock:/var/run/docker.sock') {
             sh 'cd diplomovka'
             sh 'gradle test'
