@@ -1,10 +1,27 @@
 node {
-    checkout scm
+    stage ('SCM Pull') {
+        checkout scm
+    }
+    
+    stage ('Build and Package') {
+        docker.build("diplomovka_gradle", "--file Dockerfile .") 
+    }
+    
+    stage ('Test') {
+        docker.image(diplomovka_gradle).withRun('-v //var/run/docker.sock:/var/run/docker.sock') {
+            sh 'cd diplomovka'
+            sh 'gradle test'
+        }
+    }
 
-    def diplomovkaImage = docker.build("1953/diplomovka", "--file Dockerfile_ci .") 
+    stage ('Build Docker Image') {
+        def diplomovkaImage = docker.build("1953/diplomovka", "--file Dockerfile_ci .")
+    }
 
-    docker.withRegistry('https://registry.hub.docker.com', 'docker') {            
-       diplomovkaImage.push("${env.BUILD_NUMBER}")            
-       diplomovkaImage.push("latest")        
+    stage ('Publish Image') {
+        docker.withRegistry('https://registry.hub.docker.com', 'docker') {            
+            diplomovkaImage.push("${env.BUILD_NUMBER}")            
+            diplomovkaImage.push("latest")        
+        }
     }    
 }
