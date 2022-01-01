@@ -8,7 +8,9 @@ node {
     }
     
     stage ('Test') {
-        docker.image('diplomovka_gradle').inside('-v //var/run/docker.sock:/var/run/docker.sock') {
+        docker.image('diplomovka_gradle')
+            .withRun('-v //var/run/docker.sock:/var/run/docker.sock')
+            .inside {
             sh 'cd diplomovka'
             sh 'gradle test'
         }
