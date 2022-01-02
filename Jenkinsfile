@@ -9,7 +9,7 @@ node {
     
     stage ('Test') {
         diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock') {
-            sh 'stat -c "%U %G" /path/to/file'
+            sh 'stat -c "%U %G" /var/run/docker.sock'
             sh 'gradle test'
         }
     }
