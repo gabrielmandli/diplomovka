@@ -8,8 +8,9 @@ node {
     }
     
     stage ('Test') {
-        def dockerGroupId = sh "awk -F\\: '{print \"Group \" \$1 \" with GID=\" \$3}' /etc/group | grep \"docker\" | grep -o '=.*' | cut -c 2-"
-        echo dockerGroupId
+        // def dockerGroupId = sh "awk -F\\: '{print \"Group \" \$1 \" with GID=\" \$3}' /etc/group | grep \"docker\" | grep -o '=.*' | cut -c 2-"
+        // echo dockerGroupId
+        sh 'cat /etc/group'
         diplomovkaWithGradle.inside ("-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock --group-add ${dockerGroupId}") {     
             sh 'gradle test'
         }
