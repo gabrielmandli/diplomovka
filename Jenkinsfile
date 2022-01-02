@@ -8,8 +8,8 @@ node {
     }
     
     stage ('Test') {
-        diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock --user 111:115') {     
-            sh 'getent group'       
+        diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock --user $(id -u):$(id -g)') {     
+            id 111
             sh 'gradle test'
         }
     }
