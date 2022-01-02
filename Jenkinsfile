@@ -27,4 +27,4 @@ node {
     //         diplomovkaImage.push("latest")        
     //     }
     // }    
-}
+// }
