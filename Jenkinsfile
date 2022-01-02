@@ -26,5 +26,9 @@ node {
             diplomovkaWithJdk.push("${env.BUILD_NUMBER}")            
             diplomovkaWithJdk.push("latest")        
         }
-    }    
+    }
+
+    stage ('Deploy to Integration') {
+        sshPublisher(publishers: [sshPublisherDesc(configName: 'aws_integration', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'apt-get update', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'docker-compose-deploy.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+    }
 }

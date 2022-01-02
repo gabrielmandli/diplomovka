@@ -23,6 +23,6 @@ services:
       - MYSQL_PASSWORD=mypassword
       - MYSQL_DATABASE=diplomovkadb
     ports:
-      - "3308:3306"
+      - "3306:3306"
     networks:
       - diplomovkanetwork
