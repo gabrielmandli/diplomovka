@@ -1,5 +1,3 @@
-def diplomovkaWithGradle
-
 node {
     stage ('SCM Pull') {
         checkout scm
