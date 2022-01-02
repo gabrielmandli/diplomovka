@@ -16,7 +16,7 @@ node {
     }
 
     stage ('Build Docker Image') {
-        def diplomovkaImage = docker.build("1953/diplomovka", "--file Dockerfile_ci .")
+        diplomovkaImage = docker.build("1953/diplomovka", "--file Dockerfile_ci .")
     }
 
     stage ('Publish Image') {
