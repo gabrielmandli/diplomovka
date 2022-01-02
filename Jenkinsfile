@@ -8,7 +8,7 @@ node {
     }
     
     stage ('Test') {
-        diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock --group-add 999') {     
+        diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock') {     
             sh 'gradle test'
         }
     }
