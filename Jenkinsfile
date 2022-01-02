@@ -8,8 +8,8 @@ node {
     }
     
     stage ('Test') {
-        diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock') {
-            sh 'stat -c "%U %G" /var/run/docker.sock'
+        diplomovkaWithGradle.inside ('-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock --user 111:115') {   
+            sh 'whoami'         
             sh 'gradle test'
         }
     }
