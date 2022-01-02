@@ -18,13 +18,13 @@ node {
     }
 
     stage ('Build Docker Image') {
-        diplomovkaImage = docker.build("1953/diplomovka", "--file Dockerfile_ci .")
+        diplomovkaWithJdk = docker.build("1953/diplomovka", "--file Dockerfile_ci_jdk .")
     }
 
     stage ('Publish Image') {
         docker.withRegistry('https://registry.hub.docker.com', 'docker') {            
-            diplomovkaImage.push("${env.BUILD_NUMBER}")            
-            diplomovkaImage.push("latest")        
+            diplomovkaWithJdk.push("${env.BUILD_NUMBER}")            
+            diplomovkaWithJdk.push("latest")        
         }
     }    
 }
