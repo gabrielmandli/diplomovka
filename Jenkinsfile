@@ -12,7 +12,7 @@ node {
         sh 'cat /etc/group | grep "docker" | grep -o "x:.*:" | cut -c 3- | rev | cut -c2- | rev > commandResult'
         dockerGroupId = readFile('commandResult').trim()
 
-        diplomovkaWithGradle.inside ("-v $PWD:$PWD -w $PWD -v /var/run/docker.sock:/var/run/docker.sock --group-add ${dockerGroupId}") {     
+        diplomovkaWithGradle.inside ("-v /var/run/docker.sock:/var/run/docker.sock --group-add ${dockerGroupId}") {     
             sh 'gradle test'
         }
     }
