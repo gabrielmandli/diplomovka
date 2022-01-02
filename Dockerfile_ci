@@ -1,4 +1,4 @@
 FROM diplomovka_gradle AS GRADLE_STAGE
 
 FROM openjdk:11
-COPY --from=GRADLE_STAGE /tmp/build/libs/diplomovka-0.0.1-SNAPSHOT.jar /diplomovka/diplomovka.jar
+COPY --from=GRADLE_STAGE /diplomovka/build/libs/diplomovka-0.0.1-SNAPSHOT.jar /diplomovka/diplomovka.jar
