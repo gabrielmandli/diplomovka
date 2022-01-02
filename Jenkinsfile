@@ -11,6 +11,9 @@ node {
     
     stage ('Test') {
         diplomovkaWithGradle.inside ('-v /var/run/docker.sock:/var/run/docker.sock') {
+            sh 'ls'
+            sh 'cd ..'
+            sh 'ls'
             sh 'cd diplomovka'
             sh 'gradle test'
         }
