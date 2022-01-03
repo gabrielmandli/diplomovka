@@ -5,7 +5,7 @@ networks:
 
 services:
   app:
-    image: /diplomovka
+    image: 1953/diplomovka
     ports:
       - 8080:8080
     depends_on:
