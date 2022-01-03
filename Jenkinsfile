@@ -31,9 +31,12 @@ node {
     stage ('Deploy to Integration') {
         // sshPublisher(publishers: [sshPublisherDesc(configName: 'aws_integration', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'apt-get update', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: 'docker-compose-deploy.yml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: true)])
         sshagent(credentials : ['Integration_key']) {
-            sh 'ssh -o StrictHostKeyChecking=no  ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com uptime'
-            sh 'ssh -v  ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com'
-            sh 'scp ./docker-compose-deploy.yml  ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com:/diplomovka/'
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com uptime'
+            sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com'
+            sh 'scp ./docker-compose-deploy.yml ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com:/diplomovka/docker-compose.yml'
+
+            sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com docker-compose up'
+
         }
     }
 }
