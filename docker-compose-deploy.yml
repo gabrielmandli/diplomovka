@@ -10,7 +10,7 @@ services:
       - 8080:8080
     depends_on:
       - mysql
-    command: ["/diplomovka/wait-for-it.sh", "database:3306", "--", "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /diplomovka/diplomovka-0.0.1-SNAPSHOT.jar"]
+    command: ["/diplomovka/wait-for-it.sh", "database:3306", "--", "sh", "-c", "java -Djava.security.egd=file:/dev/./urandom -jar /diplomovka/diplomovka.jar"]
     networks:
       - diplomovkanetwork
 
