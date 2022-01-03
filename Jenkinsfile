@@ -35,6 +35,7 @@ node {
             sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com'
             sh 'scp ./docker-compose-deploy.yml ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com:/diplomovka/docker-compose.yml'
 
+            sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com docker-compose -f /diplomovka/docker-compose.yml pull'
             sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com docker-compose -f /diplomovka/docker-compose.yml up'
         }
     }
