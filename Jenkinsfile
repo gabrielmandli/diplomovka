@@ -4,7 +4,7 @@ node {
     }
     
     stage ('Build and Package') {
-        diplomovkaWithGradle = docker.build("diplomovka_gradle", "--file Dockerfile .") 
+        diplomovkaWithGradle = docker.build("diplomovka_gradle") 
     }
     
     stage ('Test') {
