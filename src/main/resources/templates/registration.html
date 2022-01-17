@@ -14,7 +14,7 @@
 
 
 
-    <label for="username">User: </label>
+    <label for="username">Username: </label>
     <input type="text" th:field="*{username}" name="username"/>
     <span class="validationError"
          th:if="${#fields.hasErrors('username')}"
