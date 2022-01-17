@@ -30,12 +30,12 @@ node {
 
     stage ('Deploy to Integration') {
         sshagent(credentials : ['Integration_key']) {
-            sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com uptime'
-            sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com'
-            sh 'scp ./docker-compose-deploy.yml ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com:/diplomovka/docker-compose.yml'
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@ec2-18-193-135-203.eu-central-1.compute.amazonaws.com uptime'
+            sh 'ssh -v ubuntu@ec2-18-193-135-203.eu-central-1.compute.amazonaws.com'
+            sh 'scp ./docker-compose-deploy.yml ubuntu@ec2-18-193-135-203.eu-central-1.compute.amazonaws.com:/diplomovka/docker-compose.yml'
 
-            sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com docker-compose -f /diplomovka/docker-compose.yml pull'
-            sh 'ssh -v ubuntu@ec2-3-67-179-176.eu-central-1.compute.amazonaws.com docker-compose -f /diplomovka/docker-compose.yml up -d'
+            sh 'ssh -v ubuntu@ec2-18-193-135-203.eu-central-1.compute.amazonaws.com docker-compose -f /diplomovka/docker-compose.yml pull'
+            sh 'ssh -v ubuntu@ec2-18-193-135-203.eu-central-1.compute.amazonaws.com docker-compose -f /diplomovka/docker-compose.yml up -d'
         }
     }
 }
